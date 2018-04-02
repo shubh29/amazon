@@ -1,5 +1,7 @@
 package com.amazom.shubham.classmain;
 
+import java.util.Scanner;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.boot.SpringApplication;
@@ -61,6 +63,9 @@ public class Main {
 		AboutProject aboutProject = new AboutProject();
 		aboutProject.infoAboutprogram();
 		UserInteration userInteration = new UserInteration();
+		
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("");
 		userInteration.operationInfo();
 
 		// TODO Auto-generated method stub
@@ -71,10 +76,13 @@ public class Main {
 		// Subscription subscription = new Subscription();
 		// subscribe(topic, "email", "shubham.mahajan29@gmail.com");
 		// subscription.subscribe(topic, "SMS", "1-484-716-4765");
+		
 		EmailSubscription emailSubscription = new EmailSubscription();
 		emailSubscription.subscribe(topic, "shubham.mahajan29@gmail.com");
+		
 		SMSSubscription smsSubscription = new SMSSubscription();
 		smsSubscription.subscribe(topic, "1-484-716-4765");
+		
 		SubscriptionManager subscriptionManager = new SubscriptionManager();
 		subscriptionManager.unSubscribe("+14847164765");
 	}
