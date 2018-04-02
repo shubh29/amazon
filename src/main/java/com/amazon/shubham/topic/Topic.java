@@ -1,6 +1,6 @@
 package com.amazon.shubham.topic;
 
-import com.amazon.shubham.manager.SNSClientManager;
+import com.amazon.shubham.clientmanager.SNSClientManager;
 import com.amazon.shubham.message.Message;
 import com.amazonaws.services.sns.AmazonSNSClient;
 import com.amazonaws.services.sns.model.PublishRequest;

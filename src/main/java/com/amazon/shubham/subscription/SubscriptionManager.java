@@ -3,7 +3,7 @@ package com.amazon.shubham.subscription;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.amazon.shubham.manager.SNSClientManager;
+import com.amazon.shubham.clientmanager.SNSClientManager;
 import com.amazonaws.services.sns.AmazonSNSClient;
 import com.amazonaws.services.sns.model.ListSubscriptionsResult;
 import com.amazonaws.services.sns.model.UnsubscribeRequest;

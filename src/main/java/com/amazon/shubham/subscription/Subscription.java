@@ -1,7 +1,7 @@
 package com.amazon.shubham.subscription;
 
 
-import com.amazon.shubham.manager.SNSClientManager;
+import com.amazon.shubham.clientmanager.SNSClientManager;
 import com.amazon.shubham.topic.Topic;
 import com.amazonaws.services.sns.AmazonSNSClient;
 import com.amazonaws.services.sns.model.SubscribeRequest;

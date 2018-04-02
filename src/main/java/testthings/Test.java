@@ -1,6 +1,5 @@
 package testthings;
 
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
  
 class Test
