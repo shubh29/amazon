@@ -65,21 +65,17 @@ Scanner scanner = new Scanner(System.in);
            
         break;
         case 9://Publish
+        	System.out.println("Enter the name of the topic");
+        	userInput = scanner.next();
+        	topic = TopicFactory.createTopic(userInput);
         	topic.publish("How are you", "hi1");
 			//topic.publish(new Message("how are you", "hi"));
         	
         break;
-        case 10: //Exit 
+        case 10: //Exit
+    		System.out.println("\nThanks for using the application! Exiting the application now..");
 		
 		}
-	}
-	
-	public void caseSelection() {
-		
-	}
-	
-	public void thankYouMessage() {
-		System.out.println("\nThanks for using the application! Exiting the application now..");
 	}
 	
 	public String exitApplication() {

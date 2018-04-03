@@ -71,7 +71,6 @@ public class Main {
 		userInteration.choiceForOperation(value);
 
 		// TODO Auto-generated method stub
-		//Topic topic = TopicFactory.createTopic("abc");
 		//topic.publish("How are you", "hi1");
 		//topic.publish(new Message("how are you", "hi"));
 		//topic.deleteTopic();
