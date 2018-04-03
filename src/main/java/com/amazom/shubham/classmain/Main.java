@@ -12,16 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 */
-import com.amazon.shubham.message.Message;
+
 import com.amazon.shubham.programactions.UserInteration;
 import com.amazon.shubham.projectinfo.AboutProject;
-import com.amazon.shubham.subscription.EmailSubscription;
-import com.amazon.shubham.subscription.SMSSubscription;
-import com.amazon.shubham.subscription.SubscriptionManager;
-import com.amazon.shubham.topic.Topic;
-import com.amazon.shubham.topic.TopicFactory;
-import com.amazon.shubham.topic.TopicManager;
-import com.amazonaws.services.sns.model.transform.SubscribeRequestMarshaller;
+//import com.amazonaws.services.sns.model.transform.SubscribeRequestMarshaller;
 
 //@Controller
 //@EnableAutoConfiguration
@@ -89,6 +83,7 @@ public class Main {
 		
 		SubscriptionManager subscriptionManager = new SubscriptionManager();
 		subscriptionManager.unSubscribe("+14847164765"); */
+		scanner.close();
 	}
 
 }

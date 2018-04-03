@@ -16,8 +16,7 @@ public class EmailSubscription extends Subscription {
 			return false;
 		} else 
 			return pattern.matcher(value).matches();
-		//write validation code (check if the email is correct)
-		
+		//validation code (check if the email is correct)	
 	}
 
 	@Override
@@ -25,6 +24,4 @@ public class EmailSubscription extends Subscription {
 		// TODO Auto-generated method stub
 		return "email";
 	}
-	
-
 }

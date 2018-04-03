@@ -28,8 +28,6 @@ public class SubscriptionManager {
 
 	         subscriptions.addAll(listSubscriptionsResult.getSubscriptions());	//add next 100 topics to our local list
 	 	     nextToken = listSubscriptionsResult.getNextToken(); //check if more than 100 then nextToken != null
-	 	     
-	          
 	      }
 	      for (Subscription subscription : subscriptions) {
 	          System.out.println(subscription);
@@ -43,6 +41,9 @@ public class SubscriptionManager {
 			if(subscription.getEndpoint().equals(value)) {
 				 UnsubscribeRequest unsubscribeRequest = new UnsubscribeRequest(subscription.getSubscriptionArn());
 			      snsClient.unsubscribe(unsubscribeRequest);
+			}
+			else {
+				System.out.println("The name of the topic you entered doesn't exist!");
 			}
 		}		
 	}

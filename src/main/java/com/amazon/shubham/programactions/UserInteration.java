@@ -2,7 +2,8 @@ package com.amazon.shubham.programactions;
 
 import java.util.Scanner;
 
-import com.amazon.shubham.message.Message;
+import com.amazon.shubham.subscription.EmailSubscription;
+import com.amazon.shubham.subscription.SubscriptionManager;
 import com.amazon.shubham.topic.Topic;
 import com.amazon.shubham.topic.TopicFactory;
 import com.amazon.shubham.topic.TopicManager;
@@ -31,14 +32,13 @@ Scanner scanner = new Scanner(System.in);
 		String userInput;
 		
 		Topic topic = null;
+		SubscriptionManager subscriptionManager = new SubscriptionManager();
 		switch(inputMain){
 		case 1: //Create Topic
 			System.out.println("Enter the ame of the topic you would like to create : ");
 			userInput = scanner.next();
 			topic = TopicFactory.createTopic(userInput);
 			System.out.println("Topic created");
-			//topic.publish("How are you", "hi1");
-			//topic.publish(new Message("how are you", "hi"));
         break;
         case 2:  //List Topics
         	TopicManager topicManager = new TopicManager();
@@ -54,28 +54,34 @@ Scanner scanner = new Scanner(System.in);
         	      
         break;
         case 6:  //Subscribe
-        	
+        	//EmailSubscription emailSubscription = new EmailSubscription();
+        	//emailSubscription.subscribe(topic, value);
         break;
         case 7:  //List Subscriptions
-        	
-        	
+        	subscriptionManager.listSubscriptions();
         break;
         case 8:  //Unsubscribe
-        	
-           
+        	System.out.println("Enter the name of the topic, you would like to unsubscribe: ");
+        	userInput = scanner.next();
+        	subscriptionManager.unSubscribe(userInput);
         break;
         case 9://Publish
         	System.out.println("Enter the name of the topic");
         	userInput = scanner.next();
         	topic = TopicFactory.createTopic(userInput);
-        	topic.publish("How are you", "hi1");
+        	System.out.println("Enter the subject: ");
+        	userInput = scanner.next();
+        	System.out.println("Enter the message: ");
+        	String message = scanner.next();
+        	topic.publish(message, userInput);
 			//topic.publish(new Message("how are you", "hi"));
-        	
         break;
         case 10: //Exit
     		System.out.println("\nThanks for using the application! Exiting the application now..");
+    		scanner.close();
 		
 		}
+		System.out.println("Press any between 1 to 9 to enter the main menu, press 10 for exit :");
 	}
 	
 	public String exitApplication() {
