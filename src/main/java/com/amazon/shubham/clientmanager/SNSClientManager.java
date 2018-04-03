@@ -15,7 +15,7 @@ public class SNSClientManager {
 	
 	//make the constructor private so that this class cannot be instantiated
 	private SNSClientManager() {
-		System.out.println("New SNS Clinet Created");
+		System.out.println("New SNS Client Created");
 	    snsClient = new AmazonSNSClient(new ClasspathPropertiesFileCredentialsProvider());		                           
 		snsClient.setRegion(Region.getRegion(Regions.US_EAST_1));
 	}

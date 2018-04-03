@@ -15,7 +15,7 @@ public class TopicManager {
 	public void listTopics() {
 		 System.out.println("Listing Topics..");
 		 
-		 AmazonSNSClient snsClient = SNSClientManager.getInstance().getAmazonSNSClient();
+		 snsClient = SNSClientManager.getInstance().getAmazonSNSClient();
 		 List<Topic> topics = new ArrayList<>();
 		 
 		 ListTopicsResult listTopicsResult = snsClient.listTopics(); //gets list of topics - first 100 and nextToken if more than 100
@@ -35,12 +35,16 @@ public class TopicManager {
 	}
 	
 	public void delete(String value) {
-		
-		 List<Topic> list = new ArrayList<>();
-		 for (Topic topic: list) {
-			 if(topic.getTopicArn().equals(value)) {
-				 
-			 }
-		 }
+		 System.out.println("Fetching the list of topics");
+		 
+		 snsClient = SNSClientManager.getInstance().getAmazonSNSClient();
+		 List<Topic> topics = new ArrayList<>();
+		 
+		 ListTopicsResult listTopicsResult = snsClient.listTopics(); //gets list of topics - first 100 and nextToken if more than 100
+		 
+	     topics.addAll(listTopicsResult.getTopics());	//add first 100 topics to our local list
+	     for (Topic topic : topics) {
+	          System.out.println(topic);
+	      }
 	}
 }

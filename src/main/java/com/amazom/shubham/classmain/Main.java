@@ -2,7 +2,7 @@ package com.amazom.shubham.classmain;
 
 import java.util.Scanner;
 
-import javax.servlet.http.HttpServletRequest;
+/*import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
+*/
 import com.amazon.shubham.message.Message;
 import com.amazon.shubham.programactions.UserInteration;
 import com.amazon.shubham.projectinfo.AboutProject;
@@ -20,6 +20,7 @@ import com.amazon.shubham.subscription.SMSSubscription;
 import com.amazon.shubham.subscription.SubscriptionManager;
 import com.amazon.shubham.topic.Topic;
 import com.amazon.shubham.topic.TopicFactory;
+import com.amazon.shubham.topic.TopicManager;
 import com.amazonaws.services.sns.model.transform.SubscribeRequestMarshaller;
 
 //@Controller
@@ -63,20 +64,24 @@ public class Main {
 		AboutProject aboutProject = new AboutProject();
 		aboutProject.infoAboutprogram();
 		UserInteration userInteration = new UserInteration();
+		userInteration.operationInfo();
 		
 		Scanner scanner = new Scanner(System.in);
-		System.out.println("");
-		userInteration.operationInfo();
+		int value = scanner.nextInt();
+		userInteration.choiceForOperation(value);
 
 		// TODO Auto-generated method stub
-		Topic topic = TopicFactory.createTopic("abc");
-		topic.publish("How are you", "hi1");
-		topic.publish(new Message("how are you", "hi"));
+		//Topic topic = TopicFactory.createTopic("abc");
+		//topic.publish("How are you", "hi1");
+		//topic.publish(new Message("how are you", "hi"));
 		//topic.deleteTopic();
 		// Subscription subscription = new Subscription();
 		// subscribe(topic, "email", "shubham.mahajan29@gmail.com");
 		// subscription.subscribe(topic, "SMS", "1-484-716-4765");
-		
+		//TopicManager topicManager = new TopicManager();
+		//topicManager.listTopics();
+		//topicManager.delete("xyz");
+		/*
 		EmailSubscription emailSubscription = new EmailSubscription();
 		emailSubscription.subscribe(topic, "shubham.mahajan29@gmail.com");
 		
@@ -84,7 +89,7 @@ public class Main {
 		smsSubscription.subscribe(topic, "1-484-716-4765");
 		
 		SubscriptionManager subscriptionManager = new SubscriptionManager();
-		subscriptionManager.unSubscribe("+14847164765");
+		subscriptionManager.unSubscribe("+14847164765"); */
 	}
 
 }

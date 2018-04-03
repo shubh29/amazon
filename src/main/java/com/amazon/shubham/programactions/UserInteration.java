@@ -2,6 +2,11 @@ package com.amazon.shubham.programactions;
 
 import java.util.Scanner;
 
+import com.amazon.shubham.message.Message;
+import com.amazon.shubham.topic.Topic;
+import com.amazon.shubham.topic.TopicFactory;
+import com.amazon.shubham.topic.TopicManager;
+
 public class UserInteration {
 Scanner scanner = new Scanner(System.in);
 	
@@ -21,13 +26,23 @@ Scanner scanner = new Scanner(System.in);
 	    System.out.println("Enter an Action number");
 	}
 	
-	public String choiceForOperation(int inputMain) {
+	public void choiceForOperation(int inputMain) {
+		Scanner scanner = new Scanner(System.in);
+		String userInput;
+		
+		Topic topic = null;
 		switch(inputMain){
 		case 1: //Create Topic
-			
+			System.out.println("Enter the ame of the topic you would like to create : ");
+			userInput = scanner.next();
+			topic = TopicFactory.createTopic(userInput);
+			System.out.println("Topic created");
+			//topic.publish("How are you", "hi1");
+			//topic.publish(new Message("how are you", "hi"));
         break;
         case 2:  //List Topics
-            
+        	TopicManager topicManager = new TopicManager();
+        	topicManager.listTopics();
         break;
         case 3:  //Delete Topic
            
@@ -43,19 +58,20 @@ Scanner scanner = new Scanner(System.in);
         break;
         case 7:  //List Subscriptions
         	
+        	
         break;
         case 8:  //Unsubscribe
+        	
            
         break;
         case 9://Publish
+        	topic.publish("How are you", "hi1");
+			//topic.publish(new Message("how are you", "hi"));
         	
         break;
         case 10: //Exit 
 		
 		}
-	    
-	    
-		return null;
 	}
 	
 	public void caseSelection() {
