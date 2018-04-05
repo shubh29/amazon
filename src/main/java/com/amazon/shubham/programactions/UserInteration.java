@@ -33,6 +33,11 @@ Scanner scanner = new Scanner(System.in);
 		
 		Topic topic = null;
 		SubscriptionManager subscriptionManager = new SubscriptionManager();
+		TopicManager topicManager = new TopicManager();
+		if(inputMain <= 0 && inputMain >10) {
+			System.out.println("Invalid Input! Please enter a number between 1 to 10 only.");
+		}
+		else {
 		switch(inputMain){
 		case 1: //Create Topic
 			System.out.println("Enter the ame of the topic you would like to create : ");
@@ -41,21 +46,27 @@ Scanner scanner = new Scanner(System.in);
 			System.out.println("Topic created");
         break;
         case 2:  //List Topics
-        	TopicManager topicManager = new TopicManager();
         	topicManager.listTopics();
         break;
         case 3:  //Delete Topic
-           
+        	System.out.println("Enter the name of the topic you would like to delete:");
+        	topicManager.delete("delete");
         break;
         case 4: //Get Topic Attributes
-          
+        	//printing all the topics at this time, do it for single topic
+        	topicManager.getTopicAttributes();
         break;
         case 5:  //Set Topic Attributes
         	      
         break;
-        case 6:  //Subscribe
-        	//EmailSubscription emailSubscription = new EmailSubscription();
-        	//emailSubscription.subscribe(topic, value);
+        case 6:  //Subscribe via email
+        	System.out.println("Enter the name of the topic you would like to subscribe to: ");
+        	userInput = scanner.next();
+        	topic = TopicFactory.createTopic(userInput);
+        	System.out.println("Enter the email address you would like to subscribe to: ");
+        	userInput = scanner.next();
+        	EmailSubscription emailSubscription = new EmailSubscription();
+        	emailSubscription.subscribe(topic, userInput);
         break;
         case 7:  //List Subscriptions
         	subscriptionManager.listSubscriptions();
@@ -80,7 +91,7 @@ Scanner scanner = new Scanner(System.in);
     		System.out.println("\nThanks for using the application! Exiting the application now..");
     		scanner.close();
 		
-		}
+		} }
 		System.out.println("Press any between 1 to 9 to enter the main menu, press 10 for exit :");
 	}
 	

@@ -40,7 +40,7 @@ public class SubscriptionManager {
 		for (Subscription subscription: list) {
 			if(subscription.getEndpoint().equals(value)) {
 				 UnsubscribeRequest unsubscribeRequest = new UnsubscribeRequest(subscription.getSubscriptionArn());
-			      snsClient.unsubscribe(unsubscribeRequest);
+			     snsClient.unsubscribe(unsubscribeRequest);
 			}
 			else {
 				System.out.println("The name of the topic you entered doesn't exist!");

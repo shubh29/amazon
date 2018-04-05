@@ -18,16 +18,4 @@ public class TopicFactory {
 		return topic;
 	}
 
-	//get Topic attributes
-	public void getTopicAttributes() {
-		
-	}
-	
-	// set topic attributes
-	public void setTopicAttributes() {
-		
-	}
-	
-	
-
 }

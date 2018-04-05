@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.amazon.shubham.clientmanager.SNSClientManager;
 import com.amazonaws.services.sns.AmazonSNSClient;
+import com.amazonaws.services.sns.model.GetTopicAttributesRequest;
 import com.amazonaws.services.sns.model.ListTopicsResult;
 import com.amazonaws.services.sns.model.Topic;
 
@@ -44,7 +45,39 @@ public class TopicManager {
 		 
 	     topics.addAll(listTopicsResult.getTopics());	//add first 100 topics to our local list
 	     for (Topic topic : topics) {
-	          System.out.println(topic);
-	      }
+	         System.out.println(topic.getTopicArn());
+	         GetTopicAttributesRequest getTopicAttributesRequest = new GetTopicAttributesRequest(topic.getTopicArn());
+	         
+	         System.out.println(snsClient.getTopicAttributes(getTopicAttributesRequest));
+	          //get attributes and display name
+	     }
 	}
+	
+	
+	public void getTopicAttributes() {
+		System.out.println("Fetching the list of topics");
+		 
+		 snsClient = SNSClientManager.getInstance().getAmazonSNSClient();
+		 List<Topic> topics = new ArrayList<>();
+		 
+		 ListTopicsResult listTopicsResult = snsClient.listTopics(); //gets list of topics - first 100 and nextToken if more than 100
+		 
+	     topics.addAll(listTopicsResult.getTopics());	//add first 100 topics to our local list
+	     System.out.println("Printing list of all the topic attributes:");
+	     for (Topic topic : topics) {
+	         System.out.println(topic.getTopicArn());
+	         GetTopicAttributesRequest getTopicAttributesRequest = new GetTopicAttributesRequest(topic.getTopicArn());
+	         System.out.println(snsClient.getTopicAttributes(getTopicAttributesRequest));
+	          //get attributes and display name
+	     }
+		
+	}
+	
+	public void setTopicAttributes() {
+		
+	}
+	
+	//sns clinet method tests will require mockito
+	//message,
+	//
 }

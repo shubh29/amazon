@@ -46,15 +46,15 @@ public class Main {
 
 	@RequestMapping(value="/creatSub")
 	*/
+	//SpringApplication.run(Main.class, args);
+	
+	
 	public static void main(String[] args) throws Exception {
 
-		//SpringApplication.run(Main.class, args);
-		
 		//illegal construct
 	    //Compile Time Error: The constructor SingleObject() is not visible
 	    //SNSClientManager snsClientManager = new SNSClientManager();
-		//SINGLETON Pattern
-
+		
 		AboutProject aboutProject = new AboutProject();
 		aboutProject.infoAboutprogram();
 		UserInteration userInteration = new UserInteration();
@@ -62,6 +62,10 @@ public class Main {
 		
 		Scanner scanner = new Scanner(System.in);
 		int value = scanner.nextInt();
+		  if (value <= 0 && value > 10) {
+		        System.out.println("Invalid Input!");
+		      }
+		        System.out.println("");
 		userInteration.choiceForOperation(value);
 
 		// TODO Auto-generated method stub
