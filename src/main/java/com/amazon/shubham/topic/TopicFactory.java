@@ -15,6 +15,8 @@ public class TopicFactory {
     CreateTopicRequest createTopicRequest = new CreateTopicRequest(TopicName);
     CreateTopicResult createTopicResult = snsClient.createTopic(createTopicRequest);
     Topic topic = new Topic(createTopicResult.getTopicArn(), TopicName);
+    snsClient.setTopicAttributes(createTopicResult.getTopicArn(), "DisplayName", TopicName);
     return topic;
   }
+  
 }

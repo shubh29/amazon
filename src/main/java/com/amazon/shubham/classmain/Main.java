@@ -1,5 +1,7 @@
 package com.amazon.shubham.classmain;
 
+import com.amazon.shubham.programactions.UserInteration;
+import com.amazon.shubham.projectinfo.AboutProject;
 import java.util.Scanner;
 
 /*import javax.servlet.http.HttpServletRequest;
@@ -13,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 */
 
-import com.amazon.shubham.programactions.UserInteration;
-import com.amazon.shubham.projectinfo.AboutProject;
 //import com.amazonaws.services.sns.model.transform.SubscribeRequestMarshaller;
 
 //@Controller
@@ -88,7 +88,7 @@ public class Main {
 		
 		SubscriptionManager subscriptionManager = new SubscriptionManager();
 		subscriptionManager.unSubscribe("+14847164765"); */
-		scanner.close();
-	}
+    scanner.close();
+  }
 
 }

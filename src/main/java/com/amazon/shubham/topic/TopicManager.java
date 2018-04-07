@@ -3,7 +3,9 @@ package com.amazon.shubham.topic;
 import com.amazon.shubham.clientmanager.SNSClientManager;
 import java.util.ArrayList;
 import com.amazonaws.services.sns.AmazonSNSClient;
+import com.amazonaws.services.sns.model.DeleteTopicRequest;
 import com.amazonaws.services.sns.model.GetTopicAttributesRequest;
+import com.amazonaws.services.sns.model.GetTopicAttributesResult;
 import com.amazonaws.services.sns.model.ListTopicsResult;
 import com.amazonaws.services.sns.model.Topic;
 import java.util.List;
@@ -38,16 +40,31 @@ public class TopicManager {
 
   //Method to delete a topic
   public void delete(String value) {
+	  String topicARN ="";
 	  System.out.println("Fetching the list of topics");
 	  snsClient = SNSClientManager.getInstance().getAmazonSNSClient();
 	  List<Topic> topics = new ArrayList<>();
 	  ListTopicsResult listTopicsResult = snsClient.listTopics(); 
 	  topics.addAll(listTopicsResult.getTopics());	
 	  for (Topic topic : topics) {
-		  System.out.println(topic.getTopicArn());
+		  //System.out.println(topic.getTopicArn());
 		  GetTopicAttributesRequest getTopicAttributesRequest = new GetTopicAttributesRequest(topic.getTopicArn());
-		  System.out.println(snsClient.getTopicAttributes(getTopicAttributesRequest));
+		  //System.out.println(snsClient.getTopicAttributes(getTopicAttributesRequest));
+		  GetTopicAttributesResult getTopicAttributesResult = snsClient.getTopicAttributes(getTopicAttributesRequest);
+		  String topicName = getTopicAttributesResult.getAttributes().get("DisplayName");
+		  //System.out.println(getTopicAttributesResult.getAttributes());
+		  if(topicName.equals(value)) {
+			  topicARN = topic.getTopicArn();
+		  }
+		  //System.out.println("Topic name:"+topicName);
 		  //get attributes and display name
+	  }
+	  if(topicARN==""){
+		  System.out.println("The name of the topic you entered, doesnt exists!");
+	  } else {
+		  DeleteTopicRequest deleteTopicRequest = new DeleteTopicRequest(topicARN);
+		  snsClient.deleteTopic(deleteTopicRequest);
+		  System.out.println("The topic: "+value+" has been deleted!");
 	  }
   }
 

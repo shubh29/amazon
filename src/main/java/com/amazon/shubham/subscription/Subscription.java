@@ -1,7 +1,7 @@
 package com.amazon.shubham.subscription;
 
-
 import com.amazon.shubham.clientmanager.SNSClientManager;
+
 import com.amazon.shubham.topic.Topic;
 import com.amazonaws.services.sns.AmazonSNSClient;
 import com.amazonaws.services.sns.model.SubscribeRequest;
@@ -10,17 +10,17 @@ abstract public class Subscription {
 
   //
   public void subscribe(Topic topic, String value) {
-  //subscribe to an SNS topic
+    //subscribe to an SNS topic
     if(validate(value)) {
-	  SubscribeRequest subRequest = new SubscribeRequest(topic.getTopicARN(), getType(), value);
-	  //create a new SNS client and set endpoint
-	  AmazonSNSClient snsClient = SNSClientManager.getInstance().getAmazonSNSClient();
-	  snsClient.subscribe(subRequest);
+      SubscribeRequest subRequest = new SubscribeRequest(topic.getTopicARN(), getType(), value);
+      //create a new SNS client and set endpoint
+      AmazonSNSClient snsClient = SNSClientManager.getInstance().getAmazonSNSClient();
+      snsClient.subscribe(subRequest);
       //get request id for SubscribeRequest from SNS metadata
-	  System.out.println("SubscribeRequest - " + snsClient.getCachedResponseMetadata(subRequest));
-	  } else {
-	  System.err.println("Validation failed for" +getType()+ "with value"+value);
-  }
+      System.out.println("SubscribeRequest - " + snsClient.getCachedResponseMetadata(subRequest));
+    } else {
+      System.err.println("Validation failed for" +getType()+ "with value"+value);
+    }
   }
 
   abstract public boolean validate(String value);
