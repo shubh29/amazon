@@ -10,5 +10,15 @@ public class EmailSubscriptionTest {
 	public void test() {
 		fail("Not yet implemented");
 	}
-
+	
+	@Test
+	public String getTypeTest() {
+		return "email";
+	}
+	
+	@Test
+	public boolean validateTest(String value) {
+		return true;
+	}
+	
 }

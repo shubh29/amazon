@@ -11,4 +11,9 @@ public class TopicFactoryTest {
 		fail("Not yet implemented");
 	}
 
+	/*
+	public static Topic createTopicTest(String TopicName) {
+		return ;
+	}
+	*/
 }

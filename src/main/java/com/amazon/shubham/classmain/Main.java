@@ -1,4 +1,4 @@
-package com.amazom.shubham.classmain;
+package com.amazon.shubham.classmain;
 
 import java.util.Scanner;
 
@@ -48,26 +48,27 @@ public class Main {
 	*/
 	//SpringApplication.run(Main.class, args);
 	
-	
-	public static void main(String[] args) throws Exception {
+  //Main method
+  public static void main(String[] args) throws Exception {
 
 		//illegal construct
 	    //Compile Time Error: The constructor SingleObject() is not visible
 	    //SNSClientManager snsClientManager = new SNSClientManager();
 		
-		AboutProject aboutProject = new AboutProject();
-		aboutProject.infoAboutprogram();
-		UserInteration userInteration = new UserInteration();
-		userInteration.operationInfo();
-		
-		Scanner scanner = new Scanner(System.in);
-		int value = scanner.nextInt();
-		  if (value <= 0 && value > 10) {
-		        System.out.println("Invalid Input!");
-		      }
-		        System.out.println("");
-		userInteration.choiceForOperation(value);
+    AboutProject aboutProject = new AboutProject();
+    aboutProject.infoAboutprogram();
 
+    UserInteration userInteration = new UserInteration();
+    userInteration.operationInfo();
+
+    Scanner scanner = new Scanner(System.in);
+    int value = scanner.nextInt();
+    if (value <= 0 && value > 10) {
+    	System.out.println("Invalid Input!");
+    } else {
+        System.out.println("");
+        userInteration.choiceForOperation(value);
+    }
 		// TODO Auto-generated method stub
 		//topic.publish("How are you", "hi1");
 		//topic.publish(new Message("how are you", "hi"));

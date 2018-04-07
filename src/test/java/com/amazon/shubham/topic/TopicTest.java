@@ -11,4 +11,14 @@ public class TopicTest {
 		fail("Not yet implemented");
 	}
 
+	@Test
+	public String getTopicARN() {
+		return "topicARN";
+		
+	}
+	
+	@Test
+	public String getTopicAttributes() {
+		return "topicAttributes";
+	}
 }

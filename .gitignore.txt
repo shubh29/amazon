@@ -1,0 +1,15 @@
+*.class
+*.metadata
+.metadata/*
+*/bin/*
+*.classpath
+*.project
+*.gitignore
+.configuration\*
+*.settings
+*configuration
+configuration/*
+*config
+config/*
+*target
+target/*

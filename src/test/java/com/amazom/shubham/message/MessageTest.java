@@ -11,4 +11,13 @@ public class MessageTest {
 		fail("Not yet implemented");
 	}
 
+	@Test
+	public String getMessageTest() {
+		return "message";
+	}
+	
+	@Test
+	public String getSubjectTest() {
+		return "subject";
+	}
 }
