@@ -19,12 +19,13 @@ Scanner scanner = new Scanner(System.in);
     System.out.println("3: Delete Topic");
     System.out.println("4: Get Topic Attributes");
     System.out.println("5: Set Topic Attributes");
-    System.out.println("6: Subscribe");
-    System.out.println("7: List Subscriptions");
-    System.out.println("8: Unsubscribe");
-    System.out.println("9: Publish");
-    System.out.println("10: EXIT Application");
-    System.out.println("!! Select a number between 1 to 10 only!!");
+    System.out.println("6: Subscribe to a topic via email");
+    System.out.println("7: Subscribe to a topic via sms");
+    System.out.println("8: List Subscriptions");
+    System.out.println("9: Unsubscribe");
+    System.out.println("10: Publish");
+    System.out.println("11: Exit application");
+    System.out.println("!! Select a number between 1 to 11 only!!");
     System.out.println("Enter an Action number");
   }
 
@@ -35,7 +36,7 @@ Scanner scanner = new Scanner(System.in);
     Topic topic = null;
     SubscriptionManager subscriptionManager = new SubscriptionManager();
     TopicManager topicManager = new TopicManager();
-    if(inputMain <= 0 && inputMain >10) {
+    if(inputMain <= 0 && inputMain >11) {
       System.out.println("Invalid Input! Please enter a number between 1 to 11 only.");
     }
     else {
@@ -56,7 +57,9 @@ Scanner scanner = new Scanner(System.in);
           break;
         case 4: //Get Topic Attributes
           //printing all the topics at this time, do it for single topic
-          topicManager.getTopicAttributes();
+          System.out.println("Enter the name of the topic, you would like to get attributes of:");
+          userInput = scanner.next();
+          topicManager.getTopicAttributes(userInput);
           break;
         case 5:  //Set Topic Attributes
         
@@ -98,7 +101,7 @@ Scanner scanner = new Scanner(System.in);
     	  System.out.println("\nThanks for using the application! Exiting the application now..");
     	  scanner.close();
 		} }
-    System.out.println("Press any between 1 to 9 to enter the main menu, press 10 for exit :");
+    System.out.println("Press any between 1 to 11 to enter the main menu, press 10 for exit :");
   }
     
   public String exitApplication() {

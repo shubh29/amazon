@@ -13,6 +13,9 @@ import java.util.List;
 public class TopicManager {
 
   AmazonSNSClient snsClient;
+  String topicARN ="";
+  
+  GetTopicAttributesRequest getTopicAttributesRequest;
 
   public void listTopics() {
     System.out.println("Listing Topics..");
@@ -40,48 +43,52 @@ public class TopicManager {
 
   //Method to delete a topic
   public void delete(String value) {
-	  String topicARN ="";
-	  System.out.println("Fetching the list of topics");
-	  snsClient = SNSClientManager.getInstance().getAmazonSNSClient();
-	  List<Topic> topics = new ArrayList<>();
-	  ListTopicsResult listTopicsResult = snsClient.listTopics(); 
-	  topics.addAll(listTopicsResult.getTopics());	
-	  for (Topic topic : topics) {
-		  //System.out.println(topic.getTopicArn());
-		  GetTopicAttributesRequest getTopicAttributesRequest = new GetTopicAttributesRequest(topic.getTopicArn());
-		  //System.out.println(snsClient.getTopicAttributes(getTopicAttributesRequest));
-		  GetTopicAttributesResult getTopicAttributesResult = snsClient.getTopicAttributes(getTopicAttributesRequest);
-		  String topicName = getTopicAttributesResult.getAttributes().get("DisplayName");
-		  //System.out.println(getTopicAttributesResult.getAttributes());
-		  if(topicName.equals(value)) {
-			  topicARN = topic.getTopicArn();
-		  }
-		  //System.out.println("Topic name:"+topicName);
-		  //get attributes and display name
-	  }
-	  if(topicARN==""){
-		  System.out.println("The name of the topic you entered, doesnt exists!");
-	  } else {
-		  DeleteTopicRequest deleteTopicRequest = new DeleteTopicRequest(topicARN);
-		  snsClient.deleteTopic(deleteTopicRequest);
-		  System.out.println("The topic: "+value+" has been deleted!");
-	  }
+    System.out.println("Fetching the list of topics");
+    snsClient = SNSClientManager.getInstance().getAmazonSNSClient();
+    List<Topic> topics = new ArrayList<>();
+    ListTopicsResult listTopicsResult = snsClient.listTopics(); 
+    topics.addAll(listTopicsResult.getTopics());	
+    for (Topic topic : topics) {
+      getTopicAttributesRequest = new GetTopicAttributesRequest(topic.getTopicArn());
+      GetTopicAttributesResult getTopicAttributesResult = snsClient.getTopicAttributes(getTopicAttributesRequest);
+      String topicName = getTopicAttributesResult.getAttributes().get("DisplayName");
+      if(topicName.equals(value)) {
+    	  topicARN = topic.getTopicArn();
+      }
+    }
+    if(topicARN=="") {
+      System.out.println("The name of the topic you entered, doesnt exists!");
+    } else {
+      DeleteTopicRequest deleteTopicRequest = new DeleteTopicRequest(topicARN);
+      snsClient.deleteTopic(deleteTopicRequest);
+      System.out.println("The topic: "+value+" has been deleted!");
+    }
   }
 
   //Method to get topic attributes
-  public void getTopicAttributes() {
-	  System.out.println("Fetching the list of topics");
-	  snsClient = SNSClientManager.getInstance().getAmazonSNSClient();
-	  List<Topic> topics = new ArrayList<>();
-	  ListTopicsResult listTopicsResult = snsClient.listTopics(); //gets list of topics - first 100 and nextToken if more than 100
-	  topics.addAll(listTopicsResult.getTopics());	//add first 100 topics to our local list
-	  System.out.println("Printing list of all the topic attributes:");
-	  for (Topic topic : topics) {
-		  System.out.println(topic.getTopicArn());
-		  GetTopicAttributesRequest getTopicAttributesRequest = new GetTopicAttributesRequest(topic.getTopicArn());
-		  System.out.println(snsClient.getTopicAttributes(getTopicAttributesRequest));
-		  //get attributes and display name
+  public void getTopicAttributes(String value) {
+    System.out.println("Fetching the list of topics");
+    snsClient = SNSClientManager.getInstance().getAmazonSNSClient();
+    List<Topic> topics = new ArrayList<>();
+    ListTopicsResult listTopicsResult = snsClient.listTopics(); //gets list of topics - first 100 and nextToken if more than 100
+    topics.addAll(listTopicsResult.getTopics());	//add first 100 topics to our local list
+    System.out.println("Printing list of all the topic attributes:");
+    for (Topic topic : topics) {
+      GetTopicAttributesRequest getTopicAttributesRequest = new GetTopicAttributesRequest(topic.getTopicArn());
+      GetTopicAttributesResult getTopicAttributesResult = snsClient.getTopicAttributes(getTopicAttributesRequest);
+      String topicName = getTopicAttributesResult.getAttributes().get("DisplayName");
+      if(topicName.equals(value)) {
+        topicARN = topic.getTopicArn();
+        System.out.println(topicARN);
 	  }
+    }
+    if(topicARN=="") {
+      System.out.println("The name of the topic you entered, doesnt exists!");
+    } else {
+      GetTopicAttributesRequest getTopicAttributesRequest = new GetTopicAttributesRequest(topicARN);
+      System.out.println("Listing the attributes of the topic: "+value);
+      System.out.println(snsClient.getTopicAttributes(getTopicAttributesRequest));
+    }
   }
 
   //Method to set topic attributes
@@ -89,7 +96,4 @@ public class TopicManager {
 
   }
 
-  //sns clinet method tests will require mockito
-  //message,
-  //
 }
