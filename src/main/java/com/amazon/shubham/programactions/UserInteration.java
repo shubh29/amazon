@@ -36,10 +36,13 @@ Scanner scanner = new Scanner(System.in);
     Topic topic = null;
     SubscriptionManager subscriptionManager = new SubscriptionManager();
     TopicManager topicManager = new TopicManager();
+    boolean condition = true;
+    while(condition == true) {
     if(inputMain <= 0 && inputMain >11) {
       System.out.println("Invalid Input! Please enter a number between 1 to 11 only.");
     }
     else {
+    	
       switch(inputMain){
         case 1: //Create Topic
           System.out.println("Enter the ame of the topic you would like to create : ");
@@ -100,7 +103,10 @@ Scanner scanner = new Scanner(System.in);
         case 11: //Exit
     	  System.out.println("\nThanks for using the application! Exiting the application now..");
     	  scanner.close();
+    	  condition = false;
+    	  break;
 		} }
+    }
     System.out.println("Press any between 1 to 11 to enter the main menu, press 10 for exit :");
   }
     
