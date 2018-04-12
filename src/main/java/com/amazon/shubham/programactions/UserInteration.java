@@ -37,76 +37,70 @@ Scanner scanner = new Scanner(System.in);
     Topic topic = null;
     SubscriptionManager subscriptionManager = new SubscriptionManager();
     TopicManager topicManager = new TopicManager();
-   
-    	
-      switch(inputMain){
-        case 1: //Create Topic
-          System.out.println("Enter the ame of the topic you would like to create : ");
-          userInput = scanner.next();
-          topic = TopicFactory.createTopic(userInput);
-          System.out.println("Topic created");
-          break;
-        case 2:  //List Topics
-          topicManager.listTopics();
-          break;
-        case 3:  //Delete Topic
-         System.out.println("Enter the name of the topic you would like to delete:");
-         userInput = scanner.next();
-         topicManager.delete(userInput);
-          break;
-        case 4: //Get Topic Attributes
-          System.out.println("Enter the name of the topic, you would like to get attributes of:");
-          userInput = scanner.next();
-          topicManager.getTopicAttributes(userInput);
-          break;
-        case 5:  //Set Topic Attributes
+    switch(inputMain){
+      case 1: //Create Topic
+        System.out.println("Enter the ame of the topic you would like to create : ");
+        userInput = scanner.next();
+        topic = TopicFactory.createTopic(userInput);
+        System.out.println("Topic created");
+        break;
+      case 2:  //List Topics
+        topicManager.listTopics();
+        break;
+      case 3:  //Delete Topic
+        System.out.println("Enter the name of the topic you would like to delete:");
+        userInput = scanner.next();
+        topicManager.delete(userInput);
+        break;
+      case 4: //Get Topic Attributes
+        System.out.println("Enter the name of the topic, you would like to get attributes of:");
+        userInput = scanner.next();
+        topicManager.getTopicAttributes(userInput);
+        break;
+      case 5:  //Set Topic Attributes
         
-          break;
-        case 6:  //Subscribe via email
-          System.out.println("Enter the name of the topic you would like to subscribe to: ");
-          userInput = scanner.next();
-          topic = TopicFactory.createTopic(userInput);
-          System.out.println("Enter the email address you would like to subscribe to: ");
-          userInput = scanner.next();
-          EmailSubscription emailSubscription = new EmailSubscription();
-          emailSubscription.subscribe(topic, userInput);
-          break;
-        case 7:  //Subscribe via sms
-          System.out.println("Enter the name of the topic you would like to subscribe to: ");
-          userInput = scanner.next();
-          topic = TopicFactory.createTopic(userInput);
-          System.out.println("Enter the phone number you would like to subscribe to: ");
-          userInput = scanner.next();
-          SMSSubscription smsSubscription = new SMSSubscription();
-          smsSubscription.subscribe(topic, userInput);
-          break;
-        case 8:  //List Subscriptions
-          subscriptionManager.listSubscriptions();
-          break;
-        case 9: //Unsubscribe
-          System.out.println("Enter the name of the topic, you would like to unsubscribe: ");
-          userInput = scanner.next();
-          subscriptionManager.unSubscribe(userInput);
-          break;
-        case 10: //Publish
-          System.out.println("Enter the name of the topic");
-    	  userInput = scanner.next();
-    	  topic = TopicFactory.createTopic(userInput);
-    	  System.out.println("Enter the subject: ");
-    	  userInput = scanner.next();
-    	  System.out.println("Enter the message: ");
-    	  String message = scanner.next();
-    	  topic.publish(message, userInput);
-        case 11: //Exit
-    	  System.out.println("\nThanks for using the application! Exiting the application now..");
-    	  scanner.close();
-    	  break;
-		
+        break;
+      case 6:  //Subscribe via email
+        System.out.println("Enter the name of the topic you would like to subscribe to: ");
+        userInput = scanner.next();
+        topic = TopicFactory.createTopic(userInput);
+        System.out.println("Enter the email address you would like to subscribe to: ");
+        userInput = scanner.next();
+        EmailSubscription emailSubscription = new EmailSubscription();
+        emailSubscription.subscribe(topic, userInput);
+        break;
+      case 7:  //Subscribe via sms
+        System.out.println("Enter the name of the topic you would like to subscribe to: ");
+        userInput = scanner.next();
+        topic = TopicFactory.createTopic(userInput);
+        System.out.println("Enter the phone number you would like to subscribe to: ");
+        userInput = scanner.next();
+        SMSSubscription smsSubscription = new SMSSubscription();
+        smsSubscription.subscribe(topic, userInput);
+        break;
+      case 8:  //List Subscriptions
+        subscriptionManager.listSubscriptions();
+        break;
+      case 9: //Unsubscribe
+        System.out.println("Enter the name of the topic, you would like to unsubscribe: ");
+        userInput = scanner.next();
+        subscriptionManager.unSubscribe(userInput);
+        break;
+      case 10: //Publish
+        System.out.println("Enter the name of the topic");
+    	userInput = scanner.next();
+    	topic = TopicFactory.createTopic(userInput);
+    	System.out.println("Enter the subject: ");
+    	userInput = scanner.next();
+    	System.out.println("Enter the message: ");
+    	String message = scanner.next();
+    	topic.publish(message, userInput);
+      case 11: //Exit
+    	System.out.println("\nThanks for using the application! Exiting the application now..");
+    	scanner.close();
+    	break;
     }
     System.out.println("Press any between 1 to 11 to enter the main menu, press 10 for exit :");
   }
     
-  public String exitApplication() {
-    return "EXIT";
-  }
 }
