@@ -63,11 +63,12 @@ public class Main {
 
     Scanner scanner = new Scanner(System.in);
     int value = scanner.nextInt();
-    if (value <= 0 && value > 10) {
+    if (value <= 0 && value > 11) {
     	System.out.println("Invalid Input!");
     } else {
-        System.out.println("");
+        while(value!=10) {
         userInteration.choiceForOperation(value);
+        }
     }
 		// TODO Auto-generated method stub
 		//topic.publish("How are you", "hi1");

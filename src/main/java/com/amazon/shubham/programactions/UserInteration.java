@@ -3,6 +3,7 @@ package com.amazon.shubham.programactions;
 import java.util.Scanner;
 
 import com.amazon.shubham.subscription.EmailSubscription;
+import com.amazon.shubham.subscription.SMSSubscription;
 import com.amazon.shubham.subscription.SubscriptionManager;
 import com.amazon.shubham.topic.Topic;
 import com.amazon.shubham.topic.TopicFactory;
@@ -36,12 +37,7 @@ Scanner scanner = new Scanner(System.in);
     Topic topic = null;
     SubscriptionManager subscriptionManager = new SubscriptionManager();
     TopicManager topicManager = new TopicManager();
-    boolean condition = true;
-    while(condition == true) {
-    if(inputMain <= 0 && inputMain >11) {
-      System.out.println("Invalid Input! Please enter a number between 1 to 11 only.");
-    }
-    else {
+   
     	
       switch(inputMain){
         case 1: //Create Topic
@@ -59,7 +55,6 @@ Scanner scanner = new Scanner(System.in);
          topicManager.delete(userInput);
           break;
         case 4: //Get Topic Attributes
-          //printing all the topics at this time, do it for single topic
           System.out.println("Enter the name of the topic, you would like to get attributes of:");
           userInput = scanner.next();
           topicManager.getTopicAttributes(userInput);
@@ -80,8 +75,10 @@ Scanner scanner = new Scanner(System.in);
           System.out.println("Enter the name of the topic you would like to subscribe to: ");
           userInput = scanner.next();
           topic = TopicFactory.createTopic(userInput);
-          System.out.println("Enter the email address you would like to subscribe to: ");
+          System.out.println("Enter the phone number you would like to subscribe to: ");
           userInput = scanner.next();
+          SMSSubscription smsSubscription = new SMSSubscription();
+          smsSubscription.subscribe(topic, userInput);
           break;
         case 8:  //List Subscriptions
           subscriptionManager.listSubscriptions();
@@ -103,9 +100,8 @@ Scanner scanner = new Scanner(System.in);
         case 11: //Exit
     	  System.out.println("\nThanks for using the application! Exiting the application now..");
     	  scanner.close();
-    	  condition = false;
     	  break;
-		} }
+		
     }
     System.out.println("Press any between 1 to 11 to enter the main menu, press 10 for exit :");
   }
