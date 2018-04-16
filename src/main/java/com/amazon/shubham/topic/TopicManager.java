@@ -18,8 +18,8 @@ public class TopicManager {
   GetTopicAttributesRequest getTopicAttributesRequest;
 
   public void listTopics() {
-    System.out.println("Listing Topics..");
     snsClient = SNSClientManager.getInstance().getAmazonSNSClient();
+    System.out.println("Listing Topics..");
     List<Topic> topics = new ArrayList<>();
     //Gets list of topics - first 100 and nextToken if more than 100
     ListTopicsResult listTopicsResult = snsClient.listTopics(); 
@@ -39,6 +39,7 @@ public class TopicManager {
     for (Topic topic : topics) {
     	System.out.println(topic);
     }
+    System.out.println("");
   }
 
   //Method to delete a topic
@@ -88,6 +89,7 @@ public class TopicManager {
       GetTopicAttributesRequest getTopicAttributesRequest = new GetTopicAttributesRequest(topicARN);
       System.out.println("Listing the attributes of the topic: "+value);
       System.out.println(snsClient.getTopicAttributes(getTopicAttributesRequest));
+      System.out.println("");
     }
   }
 

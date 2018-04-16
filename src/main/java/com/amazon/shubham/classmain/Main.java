@@ -17,12 +17,12 @@ public class Main {
     aboutProject.infoAboutprogram();
     
     UserInteration userInteration = new UserInteration();
-	userInteration.operationInfo();
+    System.out.println("Press any number between 1 to 10 to continue : ");
 
     Scanner scanner = new Scanner(System.in);
     int value = scanner.nextInt();
-    while(value!=11) {
-      if(value <=0 && value > 11) {
+    while(value != 10) {
+      if(value <= 0 && value > 10) {
         System.out.println("Invalid Input!");
       } else {
         userInteration.operationInfo();

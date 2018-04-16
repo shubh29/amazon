@@ -17,7 +17,8 @@ abstract public class Subscription {
       AmazonSNSClient snsClient = SNSClientManager.getInstance().getAmazonSNSClient();
       snsClient.subscribe(subRequest);
       //get request id for SubscribeRequest from SNS metadata
-      System.out.println("SubscribeRequest - " + snsClient.getCachedResponseMetadata(subRequest));
+      System.out.println("Confirmation of SubscribeRequest - " + snsClient.getCachedResponseMetadata(subRequest));
+      System.out.println("");
     } else {
       System.err.println("Validation failed for" +getType()+ "with value"+value);
     }

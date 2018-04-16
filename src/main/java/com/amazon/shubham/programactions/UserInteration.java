@@ -19,14 +19,13 @@ Scanner scanner = new Scanner(System.in);
     System.out.println("2: List Topics");
     System.out.println("3: Delete Topic");
     System.out.println("4: Get Topic Attributes");
-    System.out.println("5: Set Topic Attributes");
-    System.out.println("6: Subscribe to a topic via email");
-    System.out.println("7: Subscribe to a topic via sms");
-    System.out.println("8: List Subscriptions");
-    System.out.println("9: Unsubscribe");
-    System.out.println("10: Publish");
-    System.out.println("11: Exit application");
-    System.out.println("!! Select a number between 1 to 11 only!!");
+    System.out.println("5: Subscribe to a topic via email");
+    System.out.println("6: Subscribe to a topic via sms");
+    System.out.println("7: List Subscriptions");
+    System.out.println("8: Unsubscribe");
+    System.out.println("9: Publish");
+    System.out.println("10: Exit application");
+    System.out.println("!! Select a number between 1 to 10 only!!");
     System.out.println("Enter an Action number");
   }
 
@@ -57,11 +56,8 @@ Scanner scanner = new Scanner(System.in);
         userInput = scanner.next();
         topicManager.getTopicAttributes(userInput);
         break;
-      case 5:  //Set Topic Attributes
-        
-        break;
-      case 6:  //Subscribe via email
-        System.out.println("Enter the name of the topic you would like to subscribe to: ");
+      case 5: //Subscribe via email
+    	System.out.println("Enter the name of the topic you would like to subscribe to: ");
         userInput = scanner.next();
         topic = TopicFactory.createTopic(userInput);
         System.out.println("Enter the email address you would like to subscribe to: ");
@@ -69,38 +65,39 @@ Scanner scanner = new Scanner(System.in);
         EmailSubscription emailSubscription = new EmailSubscription();
         emailSubscription.subscribe(topic, userInput);
         break;
-      case 7:  //Subscribe via sms
-        System.out.println("Enter the name of the topic you would like to subscribe to: ");
+      case 6: //Subscribe via sms
+    	System.out.println("Enter the name of the topic you would like to subscribe to: ");
         userInput = scanner.next();
         topic = TopicFactory.createTopic(userInput);
-        System.out.println("Enter the phone number you would like to subscribe to: ");
+        System.out.println("Enter the phone number you would like to subscribe to(in the format 1-123-456-7890): ");
         userInput = scanner.next();
         SMSSubscription smsSubscription = new SMSSubscription();
         smsSubscription.subscribe(topic, userInput);
+        break;  
+      case 7: //List Subscriptions
+    	subscriptionManager.listSubscriptions();
         break;
-      case 8:  //List Subscriptions
-        subscriptionManager.listSubscriptions();
-        break;
-      case 9: //Unsubscribe
-        System.out.println("Enter the name of the topic, you would like to unsubscribe: ");
+      case 8: //Unsubscribe
+    	System.out.println("Enter the name of the topic, you would like to unsubscribe: ");
         userInput = scanner.next();
         subscriptionManager.unSubscribe(userInput);
         break;
-      case 10: //Publish
-        System.out.println("Enter the name of the topic");
-    	userInput = scanner.next();
-    	topic = TopicFactory.createTopic(userInput);
-    	System.out.println("Enter the subject: ");
-    	userInput = scanner.next();
-    	System.out.println("Enter the message: ");
-    	String message = scanner.next();
-    	topic.publish(message, userInput);
-      case 11: //Exit
+      case 9: //Publish
+    	System.out.println("Enter the name of the topic");
+      	userInput = scanner.next();
+      	topic = TopicFactory.createTopic(userInput);
+      	System.out.println("Enter the subject: ");
+      	userInput = scanner.next();
+      	System.out.println("Enter the message: ");
+      	String message = scanner.next();
+      	topic.publish(message, userInput);
+        break;
+      case 10: //Exit
     	System.out.println("\nThanks for using the application! Exiting the application now..");
-    	scanner.close();
-    	break;
+      	scanner.close();
+      	break;
     }
-    System.out.println("Press any between 1 to 11 to enter the main menu, press 10 for exit :");
+    System.out.println("Press any between 1 to 10 to enter the main menu, press 10 for exit :");
   }
     
 }
