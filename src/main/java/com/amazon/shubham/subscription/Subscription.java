@@ -20,7 +20,8 @@ abstract public class Subscription {
       System.out.println("Confirmation of SubscribeRequest - " + snsClient.getCachedResponseMetadata(subRequest));
       System.out.println("");
     } else {
-      System.err.println("Validation failed for" +getType()+ "with value"+value);
+      System.err.println("Validation failed for " +getType()+ " with value "+value);
+      System.out.println("");
     }
   }
 

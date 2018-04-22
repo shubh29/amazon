@@ -17,6 +17,7 @@ public class TopicManager {
   
   GetTopicAttributesRequest getTopicAttributesRequest;
 
+  //Method to list topics
   public void listTopics() {
     snsClient = SNSClientManager.getInstance().getAmazonSNSClient();
     System.out.println("Listing Topics..");
@@ -91,32 +92,6 @@ public class TopicManager {
       System.out.println(snsClient.getTopicAttributes(getTopicAttributesRequest));
       System.out.println("");
     }
-  }
-
-  //Method to set topic attributes
-  public void setTopicAttributes(String value) {
-    System.out.println("Fetching the list of topics");
-    snsClient = SNSClientManager.getInstance().getAmazonSNSClient();
-    List<Topic> topics = new ArrayList<>();
-    ListTopicsResult listTopicsResult = snsClient.listTopics(); //gets list of topics - first 100 and nextToken if more than 100
-    topics.addAll(listTopicsResult.getTopics());	//add first 100 topics to our local list
-    System.out.println("Printing list of all the topic attributes:");
-    for (Topic topic : topics) {
-      GetTopicAttributesRequest getTopicAttributesRequest = new GetTopicAttributesRequest(topic.getTopicArn());
-      GetTopicAttributesResult getTopicAttributesResult = snsClient.getTopicAttributes(getTopicAttributesRequest);
-      String topicName = getTopicAttributesResult.getAttributes().get("DisplayName");
-      if(topicName.equals(value)) {
-        topicARN = topic.getTopicArn();
-	    System.out.println(topicARN);
-      }
-    }
-    if(topicARN=="") {
-      System.out.println("The name of the topic you entered, doesnt exists!");
-    } else {
-      System.out.println("Enter the name of the attribute you would like to set: ");
-	      
-    }
-
   }
 
 }
