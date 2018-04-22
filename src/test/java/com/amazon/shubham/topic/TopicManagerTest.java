@@ -28,7 +28,7 @@ import com.amazonaws.services.sns.model.Topic;
 public class TopicManagerTest {
 
     @Test
-    public void listTopicsTest() {
+    public void listTopicsTest_multipleIteration() {
         PowerMockito.mockStatic(SNSClientManager.class);
         SNSClientManager snsclientmanager = mock(SNSClientManager.class);
         AmazonSNSClient snsclient = mock(AmazonSNSClient.class);
@@ -49,6 +49,30 @@ public class TopicManagerTest {
         verify(topicResults, times(3)).getTopics();
         verify(topicResults, times(3)).getNextToken();
     }
+    
+    @Test
+    public void listTopicsTest_singleIteration() {
+        PowerMockito.mockStatic(SNSClientManager.class);
+        SNSClientManager snsclientmanager = mock(SNSClientManager.class);
+        AmazonSNSClient snsclient = mock(AmazonSNSClient.class);
+
+        ListTopicsResult topicResults = mock(ListTopicsResult.class);
+        List<Topic> topic = new ArrayList<>();
+                
+        when(SNSClientManager.getInstance()).thenReturn(snsclientmanager);
+        when(snsclientmanager.getAmazonSNSClient()).thenReturn(snsclient);
+        when(snsclient.listTopics()).thenReturn(topicResults);
+        when(topicResults.getTopics()).thenReturn(topic);
+        when(topicResults.getNextToken()).thenReturn(null);
+
+        TopicManager manager = new TopicManager();
+        manager.listTopics();
+
+        verify(topicResults, times(1)).getTopics();
+        verify(topicResults, times(1)).getNextToken();
+    }
+
+    
 
 }
 

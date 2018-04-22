@@ -87,17 +87,17 @@ Scanner scanner = new Scanner(System.in);
       	userInput = scanner.next();
       	topic = TopicFactory.createTopic(userInput);
       	System.out.println("Enter the subject: ");
-      	userInput = scanner.next();
+      	String subject = scanner.next();
       	System.out.println("Enter the message: ");
-      	String message = scanner.next();
-      	topic.publish(message, userInput);
+      	String message = scanner.next() +  scanner.nextLine();
+      	topic.publish(message, subject);
         break;
       case 10: //Exit
     	System.out.println("\nThanks for using the application! Exiting the application now..");
       	scanner.close();
       	break;
     }
-    System.out.println("Press any between 1 to 10 to enter the main menu, press 10 for exit :");
+    
   }
     
 }

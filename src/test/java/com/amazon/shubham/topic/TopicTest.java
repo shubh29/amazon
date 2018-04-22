@@ -18,7 +18,7 @@ public class TopicTest {
 	}
 	
 	@Test
-	public String getTopicAttributes() {
-		return "topicAttributes";
+	public String getTooicName() {
+		return "topicName";
 	}
 }
