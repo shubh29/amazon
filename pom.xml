@@ -25,6 +25,8 @@
 		<spring.version>3.0.5.RELEASE</spring.version>
 		<commons-lang3.version>3.4</commons-lang3.version>
 	</properties>
+	
+	
 
 	<dependencies>
 
@@ -117,6 +119,9 @@
 	</dependencies>
 
 	<build>
+	
+	
+	
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -127,6 +132,56 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
+			
+	<plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-report-plugin</artifactId>
+        <version>2.17</version>
+        <configuration>
+          <showSuccess>true</showSuccess>
+        </configuration>
+      </plugin>
+      
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.3.2</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>java</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+                <mainClass>com.amazon.shubham.classmain.Main</mainClass>
+        </configuration>
+      </plugin>
+       
+      <plugin>
+      	<groupId>org.apache.maven.plugins</groupId>
+      	<artifactId>maven-assembly-plugin</artifactId>
+      	<version>2.4</version>
+    <configuration>
+     <descriptorRefs>
+      <descriptorRef>jar-with-dependencies</descriptorRef>
+     </descriptorRefs>
+     <archive>
+      <manifest> 
+       <mainClass>com.amazon.shubham.classmain.Main</mainClass>
+      </manifest>
+     </archive>
+    </configuration>
+    <executions>
+    <execution>
+     <phase>package</phase>
+     <goals>
+      <goal>single</goal>
+     </goals>
+    </execution>
+   </executions>
+  </plugin>
+			
 		</plugins>
 	</build>
 </project>
