@@ -1,3 +1,9 @@
 2018-04-22 12:46:50 DEBUG SNSClientManager:23 - Calling SNS Client
 
 
+2018-05-01 19:28:30 DEBUG SNSClientManager:23 - Calling SNS Client
+2018-05-07 08:51:27 DEBUG SNSClientManager:23 - Calling SNS Client
+2018-05-07 08:51:28 DEBUG SNSClientManager:23 - Calling SNS Client
+2018-05-09 15:34:13 DEBUG SNSClientManager:23 - Calling SNS Client
+2018-05-09 15:35:37 INFO  validation:14 - SMS number validated. Number is : 1-484-716-4765
+2018-05-09 15:36:59 DEBUG SNSClientManager:23 - Calling SNS Client
